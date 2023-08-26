@@ -1,9 +1,12 @@
 import React from "react";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 function ContactCard() {
+  Aos.init();
   return (
     <div className="contacts">
-      <div className="contact-card">
+      <div data-aos="zoom-in" className="contact-card">
         <svg
           width="89"
           height="89"
@@ -48,7 +51,7 @@ function ContactCard() {
           <p>Phone: 1-800-222-000 Fax: 1-800-222-002</p>
         </div>
       </div>
-      <div className="contact-card">
+      <div data-aos="zoom-in"  className="contact-card">
         <svg
           width="38"
           height="27"
@@ -78,7 +81,7 @@ function ContactCard() {
           <p>info@yourdomain.com hr@yourdomain.com</p>
         </div>
       </div>
-      <div className="contact-card">
+      <div data-aos="zoom-in"  className="contact-card">
         <svg
           width="31"
           height="36"
@@ -113,7 +116,7 @@ function ContactCard() {
           <p>401 Broadway, 24th Floor New York, NY 10013</p>
         </div>
       </div>
-      <div className="contact-card">
+      <div data-aos="zoom-in"  className="contact-card">
         <svg
           width="31"
           height="36"

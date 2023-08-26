@@ -85,18 +85,18 @@ function page() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your Password"
             />
-            <p>Forgat your password?</p>
+            <p style={{ color: 'white' }}>Forgat your password?</p>
             {isLogin ? (
               <>
                 <button onClick={login}>Login</button>
-                <p>
+                <p style={{ color: 'white' }}>
                   Don't have an account? <span onClick={toggle}>Register</span>{" "}
                 </p>
               </>
             ) : (
               <>
                 <button onClick={register}>Register</button>
-                <p>
+                <p style={{color: 'white'}}>
                   Already have an account? <span onClick={toggle}>Login</span>{" "}
                 </p>
               </>
@@ -106,7 +106,6 @@ function page() {
             </div>
 
             <button onClick={googleAuth} className="google">
-              Google
               <Image
                 src="https://res.cloudinary.com/dkibnftac/image/upload/v1692519138/google_1_x7xonu.png"
                 alt="logo"

@@ -3,33 +3,53 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useEffect } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
+import { useState } from "react";
+import { db } from "@/firebase/firebase";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+
 
 function PopularMenu() {
+  Aos.init();
+  const [coffees, setCoffees] = useState([]);
+  useEffect(
+    () =>
+        onSnapshot(collection(db, "coffees"), (snapshot) =>
+        setCoffees(snapshot.docs.map((e => e.data()))),
+      []
+    )
+  );
+
   return (
     <div className="menu-container">
       <div className="menu-content">
-        <div className="menu-img">
-          <Image
-            src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/png2_3_w4xven.png"
-            alt="coffee"
-            height={200}
-            width={200}
-            className="menu-beans"
-          />
-          <Image
-            src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/Group_48_rjb5tb.png"
-            alt="coffee"
-            height={400}
-            width={700}
-            className="menu-coffee"
-          />
-          <Image
-            src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/png2_2_ustcsg.png"
-            alt="coffee"
-            height={200}
-            width={200}
-            className="menu-beans"
-          />
+        <div data-aos="zoom-in">
+          <div className="menu-img">
+            <Image
+              src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/png2_3_w4xven.png"
+              alt="coffee"
+              height={200}
+              width={200}
+              className="menu-beans"
+            />
+            <Image
+              src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/Group_48_rjb5tb.png"
+              alt="coffee"
+              height={400}
+              width={700}
+              className="menu-coffee"
+            />
+            <Image
+              src="https://res.cloudinary.com/dkibnftac/image/upload/v1692281507/png2_2_ustcsg.png"
+              alt="coffee"
+              height={200}
+              width={200}
+              className="menu-beans"
+            />
+          </div>
         </div>
       </div>
       <div className="menu-table">
