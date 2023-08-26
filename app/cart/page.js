@@ -1,8 +1,12 @@
 import React from 'react'
+import Cart from './../../components/page/Cart';
+import "../style.css"
 
-function page() {
+function page() { 
     return (
-        <div>page</div>
+        <>
+            <Cart />
+        </>
     )
 }
 

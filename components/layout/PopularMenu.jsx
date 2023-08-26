@@ -59,7 +59,11 @@ function PopularMenu() {
                 />
                 <div>
                   <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Perferendis est ipsum facere ratione nisi in sint
+                    consequatur quibusdam sapiente veniam!{" "}
+                  </p>
                 </div>
                 <h5>$7.00</h5>
               </Col>

@@ -29,7 +29,7 @@ function ProductPastriesCard({ item }) {
               <p>PHP {items.price}</p>
               <Link href={`/product/${items.id}`}>
                 <Button variant="secondary" className="card-button">
-                  Add to Cart
+                  View Product
                 </Button>
               </Link>
             </Card.Body>

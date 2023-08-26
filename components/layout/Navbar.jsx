@@ -76,10 +76,9 @@ function NavbarComponent() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 gap-3 pe-3">
-                <Link href="/">Home</Link>
-                <Link href="#action1">Overview</Link>
+                <Link href="/">Overview</Link>
                 <Link href="/product">Menu</Link>
-                <Link href="/cart">Orders</Link>
+                <Link href={user ? "/cart" : "/login"}>Orders</Link>
                 <Link href="/about">About</Link>
               </Nav>
 

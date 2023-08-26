@@ -5,7 +5,6 @@ import { Button, Card } from "react-bootstrap";
 import Image from "next/image";
 
 function ProductCard({ item }) {
-  console.log(item);
   return (
     <>
       {item &&
@@ -16,7 +15,7 @@ function ProductCard({ item }) {
             style={{ width: "15rem", height: "350px", padding: "10px" }}
           >
             <Image
-              src={items.imgUrl}
+              src={items.imageUrl}
               alt="imageproduct"
               height={200}
               width={200}
@@ -30,7 +29,7 @@ function ProductCard({ item }) {
               <p>PHP {items.price}</p>
               <Link href={`/product/${items.id}`}>
                 <Button variant="secondary" className="card-button">
-                  Add to Cart
+                  View Product
                 </Button>
               </Link>
             </Card.Body>

@@ -9,10 +9,15 @@ import ProductPastriesCard from './../../components/card/ProductPastriesCard';
 
 
 function page() {
-    const [key, setKey] = useState('home');
+    const [open, setOpen] = useState(true);
+
     const [coffee, setCoffee] = useState(null);
     const [pastries, setPastries] = useState(null);
     console.log(pastries)
+
+    const toggle = () => {
+        setOpen(!open)
+    }
 
 
     useEffect(() => {
@@ -20,7 +25,7 @@ function page() {
             setCoffee(snapshot.docs.map((e) => e.data()))
         );
         return () => {
-            // Cleanup the listener when the component unmounts
+            
             coffee();
         };
     }, []);
@@ -30,7 +35,7 @@ function page() {
             setPastries(snapshot.docs.map((e) => e.data()))
         );
         return () => {
-            // Cleanup the listener when the component unmounts
+            
             pastries();
         };
     }, []);
@@ -38,19 +43,15 @@ function page() {
     return (
         <div className='product-container'>
             <div className='product-content'>
-                <Tabs
-                    defaultActiveKey="profile"
-                    id="fill-tab-example"
-                    className="mb-3"
-                    fill
-                >
-                    <Tab eventKey="home" className='product-tab' title="Coffee">
-                        <ProductCard item={coffee} />
-                    </Tab>
-                    <Tab eventKey="profile" className='product-tab' title="Pastries">
-                        < ProductPastriesCard item={pastries} />
-                    </Tab>
-                </Tabs>
+                <div className='d-flex  justify-content-center  tabs align-items-center'>
+                    <button onClick={toggle} style={{ background: open ? "#27374D" : "transparent" }}>Coffee</button>
+                    <button onClick={toggle} style={{ background: !open ? "#27374D" : "transparent" }}>Pastries</button>
+                </div>
+                {open ? <div className='tab' >
+                    <ProductCard item={coffee} />
+                </div> : <div className='tab' >
+                    <ProductPastriesCard item={pastries} />
+                </div>}
             </div>
         </div>
     )

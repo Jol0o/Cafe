@@ -2,10 +2,12 @@ import React from 'react'
 import ProductDetail from './../../../components/page/ProductDetail';
 import "../../style.css"
 
-function page() {
+function page({ params }) {
+    const {id} = params
+    
     return (
         <>
-            <ProductDetail />
+            <ProductDetail id={id}/>
         </>
     )
 }

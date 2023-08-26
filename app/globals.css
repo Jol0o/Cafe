@@ -339,6 +339,10 @@ a {
   font-family: "Poppins", sans-serif;
   font-size: clamp(14px, 3vw, 16px);
   font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
 }
 
 .menu-grid .col h5 {
