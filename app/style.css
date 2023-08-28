@@ -505,6 +505,20 @@ form .divider {
   object-fit: cover;
 }
 
+.modal-content {
+  background: #191919;
+  color: #fff;
+}
+
+.modal-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modal-body form input {
+  padding: 8px 5px;
+}
+
 @media (max-width: 700px) {
   .product-detail-container .product-detail-content img {
     object-fit: contain;

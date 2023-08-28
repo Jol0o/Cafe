@@ -12,11 +12,12 @@ import Popover from "react-bootstrap/Popover";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
+import ProfileModal from "./../card/ProfileModal";
 
 function NavbarComponent() {
   const [user] = useAuthState(auth);
   const [scrolled, setScrolled] = useState(false);
-  console.log(user)
+  const [modalShow, setModalShow] = useState(false);
 
   const logout = async () => {
     try {
@@ -44,6 +45,7 @@ function NavbarComponent() {
 
   return (
     <>
+      <ProfileModal modalShow={modalShow} setModalShow={setModalShow} />
       <Navbar
         expand="md"
         className={`navbar-dark mb-3 ${scrolled ? "scrolled" : ""}`}
@@ -91,7 +93,12 @@ function NavbarComponent() {
                     overlay={
                       <Popover id={`popover-positioned-bottom`}>
                         <Popover.Body>
-                          <Button variant="dark">Profile</Button>
+                          <Button
+                            variant="dark"
+                            onClick={() => setModalShow(true)}
+                          >
+                            Profile
+                          </Button>
                           <Button variant="dark">Settings</Button>
                           <Button variant="dark" onClick={logout}>
                             Logout
@@ -101,7 +108,11 @@ function NavbarComponent() {
                     }
                   >
                     <Image
-                      src={user.photoURL ? user.photoURL : "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg"}
+                      src={
+                        user.photoURL
+                          ? user.photoURL
+                          : "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg"
+                      }
                       alt="user"
                       width={45}
                       height={45}
