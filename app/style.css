@@ -122,7 +122,7 @@ form .divider {
 }
 
 .product-content .tab {
-  max-height: 80vh;
+  min-height: 100vh;
   display: flex;
   justify-content: start;
   align-items: start;
@@ -424,6 +424,87 @@ form .divider {
   border-radius: 10px;
 }
 
+.about-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 100px 2%;
+}
+
+.about-page-content {
+  max-width: 1500px;
+  margin: auto;
+}
+
+.about-page-content .about-header {
+  text-align: center;
+  color: #fff;
+}
+
+.about-page-content .about-header h6 {
+  font-family: "Poppins", sans-serif;
+}
+
+.about-page-content .about-header h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(40px, 5vw, 100px);
+}
+
+.about-page-content .about-header p {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(13px, 3vw, 16px);
+}
+
+.about-team {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-team .team-card {
+  max-height: 500px;
+  width: clamp(250px, 100%, 300px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  margin: 15px 0;
+}
+
+.about-team .team-card h4 {
+  margin-top: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(15px, 3vw, 24px);
+  letter-spacing: 2px;
+  color: #d3ad7f;
+}
+
+.about-team .team-card h6 {
+  text-transform: capitalize;
+}
+
+.about-team .team-card p,
+.about-team .team-card h6 {
+  font-family: "Poppins", sans-serif;
+  color: #a1a1a1;
+}
+
+.card-body {
+  max-height: 250px;
+}
+.about-socials {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.about-team img {
+  height: 100%;
+  max-height: 250px;
+  object-fit: cover;
+}
+
 @media (max-width: 700px) {
   .product-detail-container .product-detail-content img {
     object-fit: contain;
@@ -461,6 +542,7 @@ form .divider {
     display: none;
   }
 }
+
 @media (max-width: 900px) {
   .cart-container .cart-content {
     flex-direction: column;
@@ -483,6 +565,13 @@ form .divider {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .product-content .tab {
+    max-height: 100vh;
+    overflow-y: scroll;
+    align-items: center;
+    justify-content: center;
   }
 
   .checkout-section {

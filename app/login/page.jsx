@@ -1,11 +1,12 @@
 "use client";
-import { auth } from "@/firebase/firebase";
+import { auth, db } from "@/firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -30,6 +31,17 @@ function page() {
         email,
         password
       );
+      console.log(result);
+
+      const userDocRef = doc(db, "users", result.user.uid);
+      await setDoc(userDocRef, {
+        email: result.user.email,
+        name: result.user.displayName || "user",
+        photo:
+          result.user.photoURL ||
+          "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg",
+        id: result.user.uid,
+      });
       setEmail("");
       setPassword("");
       router.push("/");
@@ -46,6 +58,7 @@ function page() {
     }
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
+
       setEmail("");
       setPassword("");
       router.push("/");
@@ -60,6 +73,15 @@ function page() {
     const provider = new GoogleAuthProvider();
     try {
       const result = await signInWithPopup(auth, provider);
+      const userDocRef = doc(db, "users", result.user.uid);
+      await setDoc(userDocRef, {
+        email: result.user.email,
+        name: result.user.displayName || "user",
+        photo:
+          result.user.photoURL ||
+          "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg",
+        id: result.user.uid,
+      });
       router.push("/");
     } catch (err) {
       console.log(err);
@@ -85,18 +107,18 @@ function page() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your Password"
             />
-            <p style={{ color: 'white' }}>Forgat your password?</p>
+            <p style={{ color: "white" }}>Forgat your password?</p>
             {isLogin ? (
               <>
                 <button onClick={login}>Login</button>
-                <p style={{ color: 'white' }}>
+                <p style={{ color: "white" }}>
                   Don't have an account? <span onClick={toggle}>Register</span>{" "}
                 </p>
               </>
             ) : (
               <>
                 <button onClick={register}>Register</button>
-                <p style={{color: 'white'}}>
+                <p style={{ color: "white" }}>
                   Already have an account? <span onClick={toggle}>Login</span>{" "}
                 </p>
               </>

@@ -16,6 +16,7 @@ import { signOut } from "firebase/auth";
 function NavbarComponent() {
   const [user] = useAuthState(auth);
   const [scrolled, setScrolled] = useState(false);
+  console.log(user)
 
   const logout = async () => {
     try {
@@ -100,7 +101,7 @@ function NavbarComponent() {
                     }
                   >
                     <Image
-                      src="https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg"
+                      src={user.photoURL ? user.photoURL : "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg"}
                       alt="user"
                       width={45}
                       height={45}

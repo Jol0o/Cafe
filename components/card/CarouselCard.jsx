@@ -4,7 +4,7 @@ import Image from "next/image";
 function CarouselCard() {
   return (
     <>
-      <div className="service-card">
+      <div data-aos="fade-right" className="service-card">
         <Image
           src="https://res.cloudinary.com/dkibnftac/image/upload/v1692418631/Rectangle_30_2_wnysmg.png"
           width={200}
@@ -62,7 +62,7 @@ function CarouselCard() {
           </p>
         </div>
       </div>
-      <div className="service-card">
+      <div data-aos="fade-right" className="service-card">
         <Image
           src="https://res.cloudinary.com/dkibnftac/image/upload/v1692418628/Rectangle_30_gmpuwq.png"
           width={200}
@@ -120,7 +120,7 @@ function CarouselCard() {
           </p>
         </div>
       </div>
-      <div className="service-card">
+      <div data-aos="fade-left" className="service-card">
         <Image
           src="https://res.cloudinary.com/dkibnftac/image/upload/v1692418627/Rectangle_30_1_ivembc.png"
           width={200}
@@ -178,7 +178,7 @@ function CarouselCard() {
           </p>
         </div>
       </div>
-      <div className="service-card">
+      <div data-aos="fade-left" className="service-card">
         <Image
           src="https://res.cloudinary.com/dkibnftac/image/upload/v1692418626/Rectangle_32_reabp5.png"
           width={200}

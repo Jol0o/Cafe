@@ -4,24 +4,35 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import { useState } from "react";
 import { db } from "@/firebase/firebase";
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function PopularMenu() {
   Aos.init();
   const [coffees, setCoffees] = useState([]);
-  useEffect(
-    () =>
-        onSnapshot(collection(db, "coffees"), (snapshot) =>
-        setCoffees(snapshot.docs.map((e => e.data()))),
-      []
-    )
-  );
+  console.log(coffees);
+
+  const popular = async () => {
+    const coffeeRef = collection(db, "coffees");
+    const q = query(coffeeRef, where("isPopular", "==", true));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setCoffees(doc.data());
+    });
+  };
+
+  useEffect(() => {
+    popular();
+  }, []);
 
   return (
     <div className="menu-container">
