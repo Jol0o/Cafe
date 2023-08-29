@@ -9,14 +9,18 @@ import ProductPastriesCard from './../../components/card/ProductPastriesCard';
 
 
 function page() {
-    const [open, setOpen] = useState(true);
+    const [tab, setTab] = useState("coffee");
 
     const [coffee, setCoffee] = useState(null);
     const [pastries, setPastries] = useState(null);
     console.log(pastries)
 
-    const toggle = () => {
-        setOpen(!open)
+    const toggleCoffee = () => {
+        setTab("coffee")
+    }
+
+    const togglepastries = () => {
+        setTab("pastries")
     }
 
 
@@ -43,13 +47,14 @@ function page() {
     return (
         <div className='product-container'>
             <div className='product-content'>
-                <div className='d-flex  justify-content-center  tabs align-items-center'>
-                    <button onClick={toggle} style={{ background: open ? "#27374D" : "transparent" }}>Coffee</button>
-                    <button onClick={toggle} style={{ background: !open ? "#27374D" : "transparent" }}>Pastries</button>
+                <div className='d-flex justify-content-center tabs align-items-center'>
+                    <button onClick={toggleCoffee} style={{ background: tab == "coffee" ? "#27374D" : "transparent" }}>Coffee</button>
+                    <button onClick={togglepastries} style={{ background: tab == "pastries" ? "#27374D" : "transparent" }}>Pastries</button>
                 </div>
-                {open ? <div className='tab' >
+                {tab == "coffee" ? <div className='tab d-flex justify-content-center' >
                     <ProductCard item={coffee} />
-                </div> : <div className='tab' >
+                </div>
+                    : <div className='tab d-flex justify-content-center' >
                     <ProductPastriesCard item={pastries} />
                 </div>}
             </div>

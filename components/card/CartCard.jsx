@@ -31,37 +31,40 @@ function CartCard({ items }) {
     <>
       {show && (
         <Alert onClose={() => setShow(false)} variant="primary" dismissible>
-          Delete Item Successfully
+          Item Deleted Successfully
         </Alert>
       )}
       {items &&
         items.cart.map((item) => (
-          <div
-            key={item.id}
-            className="
-          d-flex gap-3  item-card"
-          >
-            <Image src={item.imageUrl} alt="img" height={250} width={250} />
-            <div className="cart-info">
-              <h1>{item.name}</h1>
+          <div key={item.id} className="d-flex gap-3 item-card">
+            <Image src={item.imageUrl} alt="img" height={50} width={50} />
+            <div className="">
+              <h1 style={{ fontSize: "16px" }}>{item.name}</h1>
               <div className="d-flex gap-3">
-                <div>
-                  <h4>Price</h4> <p>{item.price}</p>
-                </div>
-                <h3> x </h3>
-                <div>
-                  <h4>Quantity</h4> <p>{item.quantity}</p>
-                </div>
-                <h3> = </h3>
-                <div>
-                  <h4>Total</h4>
-                  <p>PHP{item.price * item.quantity}</p>
-                </div>
+                <p style={{ fontSize: "12px" }}>Price PHP {item.price}</p>
+                <p style={{ fontSize: "12px" }}>x</p>
+                <p style={{ fontSize: "12px" }}>Quantity ({item.quantity})</p>
+                <p style={{ fontSize: "12px" }}>=</p>
+                <p style={{ fontSize: "12px" }}>
+                  PHP {item.price * item.quantity}
+                </p>
               </div>
-              <BsTrash
-                className="trash-icon"
-                onClick={() => deleteItem(item.id)}
-              />
+              <button
+                style={{
+                  backgroundColor: "transparent",
+                  padding: "0",
+                  height: 0,
+                  border: 0,
+                  margin: 0,
+                }}
+              >
+                <p
+                  onClick={() => deleteItem(item.id)}
+                  style={{ fontSize: "12px", color: "red" }}
+                >
+                  delete
+                </p>
+              </button>
             </div>
           </div>
         ))}

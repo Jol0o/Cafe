@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import "../style.css";
 
 function page() {
-  const [isLogin, setIslogin] = useState(false);
+  const [isLogin, setIslogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

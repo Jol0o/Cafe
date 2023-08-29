@@ -3,16 +3,20 @@ import Link from "next/link";
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import Image from "next/image";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function ProductCard({ item }) {
+  Aos.init();
   return (
     <>
       {item &&
         item.map((items) => (
+          <div data-aos="zoom-in">
           <Card
             key={items.id}
-            className="d-flex product-card flex-column align-items-center bg-dark"
-            style={{ width: "15rem", height: "350px", padding: "10px" }}
+            className="d-flex product-card flex-column align-items-center border border-dark"
+            style={{ width: "14rem", height: "350px", padding: "10px", backgroundColor: '#191919'}}
           >
             <Image
               src={items.imageUrl}
@@ -22,18 +26,28 @@ function ProductCard({ item }) {
               style={{ height: "180px", borderRadius: "10px" }}
             />
             <Card.Body
-              className="d-flex flex-column"
+              className="d-flex flex-column justify-content-center"
               style={{ justifyContent: "space-between" }}
             >
-              <Card.Title>{items.name}</Card.Title>
-              <p>PHP {items.price}</p>
+              <div>
+                <h6>{items.name}</h6>
+                <p>PHP {items.price}</p>
+              </div>
+              <div style={{display: 'flex'}}>
               <Link href={`/product/${items.id}`}>
-                <Button variant="secondary" className="card-button">
-                  View Product
-                </Button>
+                  <Button variant="secondary" className="card-button">
+                    Explore
+                  </Button>
               </Link>
+              <Link href={`/product/${items.id}`}>
+                  <Button style={{backgroundColor: '#d3ad7f'}} variant="dark" className="card-button">
+                    Buy Now
+                  </Button>
+              </Link>
+              </div>
             </Card.Body>
-          </Card>
+            </Card>
+            </div>
         ))}
     </>
   );

@@ -29,7 +29,7 @@ function NavbarComponent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 1) {
         // Adjust this value as needed
         setScrolled(true);
       } else {
@@ -107,28 +107,23 @@ function NavbarComponent() {
                       </Popover>
                     }
                   >
+                    <div style={{ borderRadius: '50%', overflow: 'hidden', width: '40px', height: '40px' }}>
                     <Image
-                      src={
-                        user.photoURL
-                          ? user.photoURL
-                          : "https://res.cloudinary.com/dkibnftac/image/upload/v1690208728/deku_ggqhox.jpg"
-                      }
-                      alt="user"
-                      width={45}
-                      height={45}
+                        src={
+                          user.photoURL
+                            ? user.photoURL
+                            : "/NOPFP.jpg"
+                        }
+                        alt="user"
+                        objectFit="cover"
+                        width={40}
+                        height={40}
                     />
+                   </div>
                   </OverlayTrigger>
                 </>
               ) : (
-                <Link href="/login">
-                  <Button
-                    size="md"
-                    className="px-4 text-uppercase btn"
-                    variant="dark"
-                  >
-                    Login
-                  </Button>
-                </Link>
+                <div></div>
               )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>

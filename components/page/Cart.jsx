@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CartCard from "../card/CartCard";
+import Button from "react-bootstrap/Button";
 
 function Cart() {
   const [user] = useAuthState(auth);
@@ -19,74 +20,91 @@ function Cart() {
     setTotal(calculatedTotal);
   };
 
- 
-
   useEffect(() => {
-  if (user) {
-    const uid = user.uid;
-    const cartRef = doc(db, "cart", uid);
+    if (user) {
+      const uid = user.uid;
+      const cartRef = doc(db, "cart", uid);
 
-    const unsubscribe = onSnapshot(cartRef, (doc) => {
-      if (doc.exists()) {
-        setCartItems(doc.data());
-      } else {
-        console.log("No cart document for this user.");
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }
-}, [user]);
-
-
+      const unsubscribe = onSnapshot(cartRef, (doc) => {
+        if (doc.exists()) {
+          setCartItems(doc.data());
+        } else {
+          console.log("No cart document for this user.");
+        }
+      });
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [user]);
 
   return (
     <div className="cart-container">
       <div className="cart-content">
         {cartItems ? (
           <>
-            <div className="item-section">
-              <div className="cart-header w-30">
-                <h1>Saving to celebrate</h1>
-                <p>
-                  Enjoy up to 60% off thousands of styles during the End of Year
-                  sale - while supplies last. No code needed.
-                </p>
-              </div>
-              <div className="bag">
-                <div className="bag-text">
-                  <h1>Your Bag</h1>
-                  <p>
-                    Items in your bag not reserved- check out now to make them
-                    yours.
-                  </p>
-                </div>
-                <div className="cart-cards ">
-                  <CartCard items={cartItems} />
-                </div>
-              </div>
+            <div className="cart-cards ">
+              <CartCard items={cartItems} />
             </div>
             <div className="checkout-section">
               <h1>Order Summary</h1>
               <div className="d-flex">
-                <h3>{cartItems.cart.lenght} Item</h3>
+                <p>Total items</p>
+                <p>{cartItems.cart.length}</p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
                 <div>
                   {cartItems.cart.map((item) => (
-                    <p key={item.id}>PHP {item.price}</p>
+                    <p key={item.id}>
+                      {item.name} ({item.quantity}){" "}
+                    </p>
+                  ))}
+                </div>
+                <div style={{ textAlign: "end" }}>
+                  {cartItems.cart.map((item) => (
+                    <p key={item.id}>PHP {item.price * item.quantity}</p>
                   ))}
                 </div>
               </div>
-              <div className="d-flex">
-                <h3>Total</h3>
-                <p>
-                  {cartItems?.cart?.reduce((accumulator, item) => {
-                    const itemTotal = item.price * item.quantity;
-                    return accumulator + itemTotal;
-                  }, 0)}
+              <hr
+                style={{
+                  background: "#d3ad7f",
+                  color: "#d3ad7f",
+                  borderColor: "#d3ad7f",
+                  height: "3px",
+                }}
+              />
+              <div className="d-flex align-content-center">
+                <div
+                  style={{
+                    marginTop: "12px",
+                    textAlign: "center",
+                  }}
+                >
+                  <h3>Total</h3>
+                  <p>
+                    PHP{" "}
+                    {cartItems?.cart?.reduce((accumulator, item) => {
+                      const itemTotal = item.price * item.quantity;
+                      return accumulator + itemTotal;
+                    }, 0)}
+                  </p>
+                </div>
+                <p
+                  style={{
+                    alignItems: "center",
+                    marginTop: "24px",
+                    marginRight: "12px",
+                  }}
+                >
+                  Check out coming soon
                 </p>
               </div>
-              <button>Checkout</button>
             </div>
           </>
         ) : (

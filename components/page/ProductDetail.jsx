@@ -92,8 +92,11 @@ function ProductDetail({ id }) {
               alt="img"
             />
           </div>
-          <div className="product-details">
+
+          <div style={{ margin: '24px'}} className="product-details d-flex flex-column justify-content-between">
+            <div>
             <h1>{details?.name}</h1>
+            <p>{details?.description}</p>
             <div className="rating">
               <StarRatings
                 rating={details?.rating}
@@ -104,27 +107,28 @@ function ProductDetail({ id }) {
                 starSpacing="5px"
                 name="rating"
               />
-              <h3>{details?.rating} Reviews</h3>
             </div>
-            <p>{details?.description}</p>
-            <div className="product-options">
-              <div className="flavor">
-                <h2>Flavor</h2>
+            <div style={{display: 'flex', justifyContent: 'space-between' , marginTop: '42px'}}>
+                <p>Flavor</p>
                 <p>Mocha</p>
-              </div>
-              <div className="quantity">
-                <h2>Case Quantity</h2>
-                <div className="increment">
-                  <button onClick={decrement}>-</button>
-                  <h3>{count}</h3>
-                  <button onClick={increment}>+</button>
-                </div>
-              </div>
             </div>
-            <h3 className="price">PHP {details?.price}</h3>
-            <button className="cart" onClick={() => addToCart(details)}>
+            <div style={{display: 'flex', justifyContent: 'space-between' , margin: '0px 0px'}}>
+                <p>Price</p>
+                <p>PHP {details?.price}</p>
+              </div>
+            <div style={{display: 'flex'}}>
+              { details?.isExclusive ? <p style={{color: 'black', backgroundColor: 'white', width: 'fit-content', padding: '2px 12px', borderRadius: '12px', marginRight: '6px', marginTop:'12px', fontWeight: 'normal'}}>Exclusive</p> : <p></p>}
+              { details?.isPopular ? <p style={{color: 'black', backgroundColor: 'white', width: 'fit-content', padding: '2px 12px', borderRadius: '12px', marginRight: '6px',  marginTop:'12px', fontWeight: 'normal'}}>Popular</p> : <p></p>}
+            </div>
+          </div>
+            <div style={{display: 'flex'}}>
+            <button style={{backgroundColor: '#d3ad7f', borderRadius: '12px', margin: '0px 4px'}} className="cart" onClick={() => addToCart(details)}>
+              Buy Now
+            </button>
+            <button style={{borderRadius: '12px', margin: '0px 4px'}} className="cart" onClick={() => addToCart(details)}>
               Add to Cart
             </button>
+            </div>
           </div>
         </div>
       )}

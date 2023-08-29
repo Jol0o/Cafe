@@ -3,38 +3,51 @@ import React from "react";
 import Link from "next/link";
 import { Button, Card } from "react-bootstrap";
 import Image from "next/image";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function ProductPastriesCard({ item }) {
+  Aos.init();
   return (
     <>
-      {item &&
-        item.map((items) => (
+      {item.map((items) => (
+        <div data-aos="zoom-in">
           <Card
-            key={items.id}
-            className="d-flex product-card flex-column align-items-center bg-dark"
-            style={{ width: "15rem", height: "350px", padding: "10px" }}
+          key={items.id}
+          className="d-flex product-card flex-column align-items-center border border-dark"
+          style={{ width: "14rem", height: "350px", padding: "10px", backgroundColor: '#191919'}}
+        >
+          <Image
+            src={items.imageUrl}
+            alt="imageproduct"
+            height={200}
+            width={200}
+            style={{ height: "180px", borderRadius: "10px" }}
+          />
+          <Card.Body
+            className="d-flex flex-column justify-content-center"
+            style={{ justifyContent: "space-between" }}
           >
-            <Image
-              src={items.imageUrl}
-              alt="imageproduct"
-              height={200}
-              width={200}
-              style={{ height: "180px", borderRadius: "10px" }}
-            />
-            <Card.Body
-              className="d-flex flex-column"
-              style={{ justifyContent: "space-between" }}
-            >
-              <Card.Title>{items.name}</Card.Title>
+            <div>
+              <h6>{items.name}</h6>
               <p>PHP {items.price}</p>
-              <Link href={`/product/${items.id}`}>
+            </div>
+            <div style={{display: 'flex'}}>
+            <Link href={`/product/${items.id}`}>
                 <Button variant="secondary" className="card-button">
-                  View Product
+                  Explore
                 </Button>
-              </Link>
-            </Card.Body>
-          </Card>
-        ))}
+            </Link>
+            <Link href={`/product/${items.id}`}>
+                <Button style={{backgroundColor: '#d3ad7f'}} variant="dark" className="card-button">
+                  Buy Now
+                </Button>
+            </Link>
+            </div>
+          </Card.Body>
+        </Card>
+        </div>
+          ))}
     </>
   );
 }

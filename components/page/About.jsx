@@ -23,15 +23,7 @@ function About() {
       role: "Project Manager",
       img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/jannray_wnrjqk.png ",
     },
-    {
-      name: "Ma. Kristina M. Basas",
-      facebook: "https://www.facebook.com/kristinavxv",
-      ig: "https://www.instagram.com/_tinaatangi/",
-      description:
-        "A 2nd-year college student who’s taking a Bachelor's degree in Information Technology at CVSU Trece Campus.",
-      role: "Researcher",
-      img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/361613951_2001210540231511_90130525065791279_n_zkbcla.jpg",
-    },
+
     {
       name: "Marianne S. Sabado",
       facebook:
@@ -39,8 +31,26 @@ function About() {
       ig: "https://instagram.com/_yaniiverse?utm_source=qr&igshid=ZDc4ODBmNjlmNQ%3D%3D",
       description:
         "A 19-year-old student at Cavite State University - Trece Martires Campus taking a Bachelor Science in Information Technology (BSIT) Course.",
-      role: "ui/ux designer",
+      role: "UI/UX designer",
       img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201616/marianne_zkbwe6.jpg",
+    },
+    {
+      name: "Rjay C. Espineli",
+      facebook: "https://www.facebook.com/rjayespineli",
+      ig: "https://www.instagram.com/r.jaye_/",
+      description:
+        "Description: A 2nd year student pursuing Bachelor of Science in Information Technology.",
+      role: "QA Tester",
+      img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/372293428_1424281405018183_9167317782362451280_n_zhzlvc.jpg",
+    },
+    {
+      name: "Ma. Kristina M. Basas",
+      facebook: "https://www.facebook.com/kristinavxv",
+      ig: "https://www.instagram.com/_tinaatangi/",
+      description:
+        "A 2nd-year college student who’s taking a Bachelor's degree in Information Technology at CVSU Trece Campus.",
+      role: "Data Analyst",
+      img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/361613951_2001210540231511_90130525065791279_n_zkbcla.jpg",
     },
     {
       name: "Raiza Mae A. Mendoza",
@@ -51,18 +61,12 @@ function About() {
       role: "Researcher",
       img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693203637/333675185_161138636734072_5476152285124345646_n_dqfl3g.jpg",
     },
-    {
-      name: "Rjay C. Espineli",
-      facebook: "https://www.facebook.com/rjayespineli",
-      ig: "https://www.instagram.com/r.jaye_/",
-      description:
-        "Description: A 2nd year student pursuing Bachelor of Science in Information Technology.",
-      role: "Researcher",
-      img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/372293428_1424281405018183_9167317782362451280_n_zhzlvc.jpg",
-    },
   ];
   return (
-    <div className="about-container">
+    <div
+      style={{ paddingTop: "100px", padding: "24px" }}
+      className="about-container"
+    >
       <div className="about-page-content">
         <div className="about-header">
           <h6>Our Team</h6>
