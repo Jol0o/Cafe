@@ -13,7 +13,6 @@ function page() {
 
     const [coffee, setCoffee] = useState(null);
     const [pastries, setPastries] = useState(null);
-    console.log(pastries)
 
     const toggleCoffee = () => {
         setTab("coffee")
@@ -29,7 +28,7 @@ function page() {
             setCoffee(snapshot.docs.map((e) => e.data()))
         );
         return () => {
-            
+
             coffee();
         };
     }, []);
@@ -39,7 +38,7 @@ function page() {
             setPastries(snapshot.docs.map((e) => e.data()))
         );
         return () => {
-            
+
             pastries();
         };
     }, []);
@@ -55,8 +54,8 @@ function page() {
                     <ProductCard item={coffee} />
                 </div>
                     : <div className='tab d-flex justify-content-center' >
-                    <ProductPastriesCard item={pastries} />
-                </div>}
+                        <ProductPastriesCard item={pastries} />
+                    </div>}
             </div>
         </div>
     )

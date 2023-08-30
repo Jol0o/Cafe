@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import {
   collection,
   getDocs,
+  limit,
   onSnapshot,
   query,
   where,
@@ -15,23 +16,25 @@ import { useState } from "react";
 import { db } from "@/firebase/firebase";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link";
 
 function PopularMenu() {
   Aos.init();
   const [coffees, setCoffees] = useState([]);
   console.log(coffees);
 
-  const popular = async () => {
-    const coffeeRef = collection(db, "coffees");
-    const q = query(coffeeRef, where("isPopular", "==", true));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      setCoffees(doc.data());
-    });
-  };
-
   useEffect(() => {
-    popular();
+    const coffeeRef = collection(db, "coffees");
+    const q = query(coffeeRef, where("isPopular", "==", true), limit(8));
+
+    const popular = onSnapshot(q, (snapshot) => {
+      const coffeeData = snapshot.docs.map((doc) => doc.data());
+      setCoffees(coffeeData);
+    });
+
+    return () => {
+      popular(); // Unsubscribe from the snapshot listener when the component unmounts
+    };
   }, []);
 
   return (
@@ -68,120 +71,23 @@ function PopularMenu() {
         <div className="grid-container">
           <Container className="menu-grid">
             <Row className="justify-content-center">
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Perferendis est ipsum facere ratione nisi in sint
-                    consequatur quibusdam sapiente veniam!{" "}
-                  </p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-            </Row>
-            <Row className="justify-content-center">
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-            </Row>
-            <Row className="justify-content-center">
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-            </Row>
-            <Row className="justify-content-center">
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
-              <Col className="col" xs={12} sm={5}>
-                <Image
-                  src="https://res.cloudinary.com/dkibnftac/image/upload/v1692359391/image_3_cuog6o.png"
-                  alt="coffee"
-                  height={70}
-                  width={70}
-                />
-                <div>
-                  <h4>Irish</h4>
-                  <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <h5>$7.00</h5>
-              </Col>
+              {coffees.map((item) => (
+                <>
+                  <Col className="col d-flex" sm={12} md={5}>
+                    <Image
+                      src={item.imageUrl}
+                      alt="coffee"
+                      height={70}
+                      width={70}
+                    />
+                    <div>
+                      <h4>{item.name}</h4>
+                      <p>{item.description}</p>
+                    </div>
+                    <h5>Php {item.price}</h5>{" "}
+                  </Col>
+                </>
+              ))}
             </Row>
           </Container>
         </div>
