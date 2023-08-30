@@ -37,20 +37,6 @@ function ProductDetail({ id }) {
     getProductById();
   }, [id]);
 
-  const increment = () => {
-    if (count <= 9) {
-      setCount(count + 1);
-    }
-  };
-
-  const decrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    } else {
-      setCount(1);
-    }
-  };
-
   const addToCart = async (product) => {
     if (!user) {
       router.push("/login");
@@ -73,6 +59,7 @@ function ProductDetail({ id }) {
           cart[productIndex].quantity += 1;
         }
         await setDoc(userRef, { cart });
+        router.push("/cart");
       } catch (error) {
         console.error(error);
       }
@@ -93,41 +80,91 @@ function ProductDetail({ id }) {
             />
           </div>
 
-          <div style={{ margin: '24px'}} className="product-details d-flex flex-column justify-content-between">
+          <div
+            style={{ margin: "24px" }}
+            className="product-details d-flex flex-column justify-content-between"
+          >
             <div>
-            <h1>{details?.name}</h1>
-            <p>{details?.description}</p>
-            <div className="rating">
-              <StarRatings
-                rating={details?.rating}
-                starRatedColor="yellow"
-                changeRating={changeRating}
-                numberOfStars={5}
-                starDimension="18px"
-                starSpacing="5px"
-                name="rating"
-              />
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-between' , marginTop: '42px'}}>
+              <h1>{details?.name}</h1>
+              <p>{details?.description}</p>
+              <div className="rating">
+                <StarRatings
+                  rating={details?.rating}
+                  starRatedColor="yellow"
+                  changeRating={changeRating}
+                  numberOfStars={5}
+                  starDimension="18px"
+                  starSpacing="5px"
+                  name="rating"
+                />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "42px",
+                }}
+              >
                 <p>Flavor</p>
                 <p>Mocha</p>
-            </div>
-            <div style={{display: 'flex', justifyContent: 'space-between' , margin: '0px 0px'}}>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  margin: "0px 0px",
+                }}
+              >
                 <p>Price</p>
                 <p>PHP {details?.price}</p>
               </div>
-            <div style={{display: 'flex'}}>
-              { details?.isExclusive ? <p style={{color: 'black', backgroundColor: 'white', width: 'fit-content', padding: '2px 12px', borderRadius: '12px', marginRight: '6px', marginTop:'12px', fontWeight: 'normal'}}>Exclusive</p> : <p></p>}
-              { details?.isPopular ? <p style={{color: 'black', backgroundColor: 'white', width: 'fit-content', padding: '2px 12px', borderRadius: '12px', marginRight: '6px',  marginTop:'12px', fontWeight: 'normal'}}>Popular</p> : <p></p>}
+              <div style={{ display: "flex" }}>
+                {details?.isExclusive ? (
+                  <p
+                    style={{
+                      color: "black",
+                      backgroundColor: "white",
+                      width: "fit-content",
+                      padding: "2px 12px",
+                      borderRadius: "12px",
+                      marginRight: "6px",
+                      marginTop: "12px",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    Exclusive
+                  </p>
+                ) : (
+                  <p></p>
+                )}
+                {details?.isPopular ? (
+                  <p
+                    style={{
+                      color: "black",
+                      backgroundColor: "white",
+                      width: "fit-content",
+                      padding: "2px 12px",
+                      borderRadius: "12px",
+                      marginRight: "6px",
+                      marginTop: "12px",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    Popular
+                  </p>
+                ) : (
+                  <p></p>
+                )}
+              </div>
             </div>
-          </div>
-            <div style={{display: 'flex'}}>
-            <button style={{backgroundColor: '#d3ad7f', borderRadius: '12px', margin: '0px 4px'}} className="cart" onClick={() => addToCart(details)}>
-              Buy Now
-            </button>
-            <button style={{borderRadius: '12px', margin: '0px 4px'}} className="cart" onClick={() => addToCart(details)}>
-              Add to Cart
-            </button>
+            <div style={{ display: "flex" }}>
+              <button
+                style={{ borderRadius: "12px", margin: "0px 4px" }}
+                className="cart"
+                onClick={() => addToCart(details)}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

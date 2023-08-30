@@ -81,7 +81,7 @@ function NavbarComponent() {
               <Nav className="justify-content-end flex-grow-1 gap-3 pe-3">
                 <Link href="/">Overview</Link>
                 <Link href="/product">Menu</Link>
-                <Link href={user ? "/cart" : "/login"}>Orders</Link>
+                <Link href={user ? "/cart" : "/login"}>Cart</Link>
                 <Link href="/about">About</Link>
               </Nav>
 
@@ -99,7 +99,6 @@ function NavbarComponent() {
                           >
                             Profile
                           </Button>
-                          <Button variant="dark">Settings</Button>
                           <Button variant="dark" onClick={logout}>
                             Logout
                           </Button>
@@ -107,19 +106,22 @@ function NavbarComponent() {
                       </Popover>
                     }
                   >
-                    <div style={{ borderRadius: '50%', overflow: 'hidden', width: '40px', height: '40px' }}>
-                    <Image
-                        src={
-                          user.photoURL
-                            ? user.photoURL
-                            : "/NOPFP.jpg"
-                        }
+                    <div
+                      style={{
+                        borderRadius: "50%",
+                        overflow: "hidden",
+                        width: "40px",
+                        height: "40px",
+                      }}
+                    >
+                      <Image
+                        src={user.photoURL ? user.photoURL : "/NOPFP.jpg"}
                         alt="user"
                         objectFit="cover"
                         width={40}
                         height={40}
-                    />
-                   </div>
+                      />
+                    </div>
                   </OverlayTrigger>
                 </>
               ) : (

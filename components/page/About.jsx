@@ -63,22 +63,15 @@ function About() {
     },
   ];
   return (
-    <div
-      style={{ paddingTop: "100px", padding: "24px" }}
-      className="about-container"
-    >
+    <div className="about-container">
       <div className="about-page-content">
         <div className="about-header">
-          <h6>Our Team</h6>
+          <h6 style={{ paddingTop: "110px" }}>Our Team</h6>
           <h1>Meet the Cafe Urban Team</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae,
-            nulla?
-          </p>
         </div>
         <div className="about-team">
           {team.map((item) => (
-            <div className="team-card">
+            <div data-aos="zoom-in" className="team-card">
               <Image src={item.img} alt="img" width={300} height={300} />
               <div className="card-body">
                 <h4>{item.name}</h4>
@@ -97,6 +90,9 @@ function About() {
           ))}
         </div>
       </div>
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
