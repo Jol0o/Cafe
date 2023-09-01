@@ -41,7 +41,7 @@ function Cart() {
   return (
     <div className="cart-container">
       <div className="cart-content">
-        {cartItems ? (
+        {cartItems?.cart.length > 0 ? (
           <>
             <div className="cart-cards ">
               <CartCard items={cartItems} />

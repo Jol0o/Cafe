@@ -1,8 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function FrontAbout() {
   Aos.init();
@@ -17,15 +16,15 @@ function FrontAbout() {
             width={150}
           />
           <h2>
-            Now enjoy a wonderful <br /> cafe dining experience <br /> and healthy
-            food
+            Now enjoy a wonderful <br /> cafe dining experience <br /> and
+            healthy food
           </h2>
           <div className="about-text">
             <h3>About Us</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur ratione quae repellat hic aliquid fugit quis unde
-              aliquam enim saepe.
+              At Cafe Urban, we are passionate about serving the finest coffee
+              and creating a warm, inviting space for our community to savor
+              moments of caffeinated bliss.
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { TiDeleteOutline } from "react-icons/ti";
 
 function CartCard({ items }) {
   const [user] = useAuthState(auth);
@@ -41,50 +42,22 @@ function CartCard({ items }) {
             <div key={item.id} className="d-flex gap-3 item-card">
               <Image src={item.imageUrl} alt="img" height={50} width={50} />
               <div className="">
-                <h1 style={{ fontSize: "16px" }}>{item.name}</h1>
-                <div className="d-flex flex-column">
-                  <p style={{ fontSize: "12px" }}>Price PHP {item.price}</p>
-                  <div>
-                    <p style={{ fontSize: "12px", marginRight: "4px" }}>
-                      Quantity {item.quantity}
-                    </p>
-                  </div>
+                <div
+                  style={{ width: "100%" }}
+                  className="d-flex justify-content-between"
+                >
+                  <h1 style={{ fontSize: "16px" }}>{item.name}</h1>
+                  <TiDeleteOutline
+                    size={24}
+                    color="red"
+                    cursor={"pointer"}
+                    onClick={() => deleteItem(item.id)}
+                  />
                 </div>
-                <div>
-                  <button
-                    style={{
-                      backgroundColor: "transparent",
-                      padding: "0",
-                      height: 0,
-                      border: 0,
-                      margin: 0,
-                      marginright: "12px",
-                    }}
-                  >
-                    <p
-                      onClick={() => deleteItem(item.id)}
-                      style={{ fontSize: "12px", color: "lightGreen" }}
-                    >
-                      Update
-                    </p>
-                  </button>
-                  <button
-                    style={{
-                      backgroundColor: "transparent",
-                      padding: "0",
-                      height: 0,
-                      border: 0,
-                      margin: 0,
-                    }}
-                  >
-                    <p
-                      onClick={() => deleteItem(item.id)}
-                      style={{ fontSize: "12px", color: "red" }}
-                    >
-                      delete
-                    </p>
-                  </button>
-                </div>
+
+                <h1 style={{ fontSize: "12px" }}>Price PHP {item.price}</h1>
+                <h1 style={{ fontSize: "12px" }}>Quantity {item.quantity}</h1>
+                <div></div>
               </div>
             </div>
           );

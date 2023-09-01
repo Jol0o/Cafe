@@ -1,6 +1,6 @@
 import React from "react";
-import Aos from 'aos';
-import 'aos/dist/aos.css';
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function ContactCard() {
   Aos.init();
@@ -48,10 +48,10 @@ function ContactCard() {
         </svg>
         <div>
           <h2>Let's Talk</h2>
-          <p>Phone: 1-800-222-000 Fax: 1-800-222-002</p>
+          <p>Phone: 0000-000-0000 Fax: 0-000-000-000</p>
         </div>
       </div>
-      <div data-aos="zoom-in"  className="contact-card">
+      <div data-aos="zoom-in" className="contact-card">
         <svg
           width="38"
           height="27"
@@ -78,10 +78,10 @@ function ContactCard() {
         </svg>
         <div>
           <h2>TICKETS INFO</h2>
-          <p>info@yourdomain.com hr@yourdomain.com</p>
+          <p>cafeUrban@gmail.com</p>
         </div>
       </div>
-      <div data-aos="zoom-in"  className="contact-card">
+      <div data-aos="zoom-in" className="contact-card">
         <svg
           width="31"
           height="36"
@@ -112,43 +112,8 @@ function ContactCard() {
         </svg>
 
         <div>
-          <h2>cotact us</h2>
-          <p>401 Broadway, 24th Floor New York, NY 10013</p>
-        </div>
-      </div>
-      <div data-aos="zoom-in"  className="contact-card">
-        <svg
-          width="31"
-          height="36"
-          viewBox="0 0 31 36"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clipPath="url(#clip0_67_232)">
-            <path
-              d="M15.3378 0.700195C22.578 0.785594 28.6736 5.89284 29.8972 13.0778C30.7242 17.9351 29.3942 22.2362 25.9991 25.7917C22.8248 29.116 19.5172 32.3133 16.2647 35.5626C15.6774 36.1489 14.964 36.1448 14.3735 35.5553C11.1575 32.3424 7.91546 29.1546 4.73905 25.9032C1.72718 22.8195 0.33373 19.065 0.534729 14.767C0.855495 7.93408 5.98253 2.16551 12.7144 1.00326C13.5809 0.853288 14.463 0.799133 15.3378 0.700195ZM15.3222 32.9361C15.393 32.8767 15.4441 32.8392 15.4888 32.7944C18.3997 29.8805 21.3595 27.0144 24.2057 24.039C27.0343 21.0834 28.0924 17.4987 27.4124 13.4642C26.2543 6.57707 19.5547 2.0447 12.7259 3.57771C8.10916 4.61395 4.97858 7.46959 3.59658 11.9822C2.22083 16.4781 3.19562 20.596 6.43244 24.0244C9.26725 27.0279 12.2541 29.8867 15.1743 32.81C15.2108 32.8465 15.2524 32.8767 15.3222 32.9361Z"
-              fill="#D3AD7F"
-            />
-            <path
-              d="M15.3204 21.0665C11.7649 21.0363 9.05403 18.2369 9.0884 14.6294C9.11964 11.3134 12.0097 8.54314 15.4027 8.57647C18.8717 8.61084 21.5899 11.4592 21.5555 15.0251C21.5243 18.3223 18.6614 21.0957 15.3204 21.0676V21.0665ZM15.3423 11.0957C13.3167 11.0645 11.6087 12.736 11.5795 14.7772C11.5514 16.781 13.2011 18.5181 15.1652 18.5504C17.3158 18.5858 19.0217 16.9861 19.0634 14.896C19.104 12.8256 17.4418 11.128 15.3423 11.0957Z"
-              fill="#D3AD7F"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_67_232">
-              <rect
-                width="29.6198"
-                height="35.2998"
-                fill="white"
-                transform="translate(0.516266 0.700195)"
-              />
-            </clipPath>
-          </defs>
-        </svg>
-
-        <div>
-          <h2>EVENT DETAILS</h2>
-          <p>Lorem ipsum is simply dummy text printing</p>
+          <h2>contact us</h2>
+          <p>CVSU Trece Campus, Brgy Gregorio</p>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import { FiFacebook } from "react-icons/fi";
-import { BsInstagram } from "react-icons/bs";
+import { FaFacebook } from "react-icons/fa";
+import { GrInstagram } from "react-icons/gr";
 import Image from "next/image";
 
 function About() {
@@ -19,7 +19,7 @@ function About() {
       facebook: "https://www.facebook.com/jannray.mostajo",
       ig: "https://www.instagram.com/_jannrayyy/",
       description:
-        " A 20 Year old Software developer studying at Cavite State University - Trece Martires Campus.",
+        " A Software dev studying at Cavite State University - Trece Martires Campus.",
       role: "Project Manager",
       img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/jannray_wnrjqk.png ",
     },
@@ -39,7 +39,7 @@ function About() {
       facebook: "https://www.facebook.com/rjayespineli",
       ig: "https://www.instagram.com/r.jaye_/",
       description:
-        "Description: A 2nd year student pursuing Bachelor of Science in Information Technology.",
+        "A 2nd year student pursuing Bachelor of Science in Information Technology.",
       role: "QA Tester",
       img: "https://res.cloudinary.com/dkibnftac/image/upload/v1693201614/372293428_1424281405018183_9167317782362451280_n_zhzlvc.jpg",
     },
@@ -79,10 +79,10 @@ function About() {
                 <p>{item.description.slice(0, 60)}</p>
                 <div className="about-socials">
                   <a href={item.facebook} target="_blank">
-                    <FiFacebook />
+                    <FaFacebook />
                   </a>
                   <a href={item.ig} target="_blank">
-                    <BsInstagram />
+                    <GrInstagram />
                   </a>
                 </div>
               </div>

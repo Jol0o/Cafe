@@ -66,25 +66,30 @@ function PopularMenu() {
           </div>
         </div>
       </div>
-      <div className="menu-table">
+      <div data-aos="fade-in" className="menu-table">
         <h1>Popular Menu</h1>
-        <div className="grid-container">
+        <div data-aos="zoom-in" className="grid-container">
           <Container className="menu-grid">
             <Row className="justify-content-center">
               {coffees.map((item) => (
                 <>
-                  <Col className="col d-flex" sm={12} md={5}>
+                  <Col
+                    className="col d-flex justify-content-start"
+                    sm={12}
+                    md={5}
+                  >
                     <Image
                       src={item.imageUrl}
                       alt="coffee"
                       height={70}
                       width={70}
                     />
-                    <div>
+                    <div style={{ marginLeft: "24px" }}>
                       <h4>{item.name}</h4>
-                      <p>{item.description}</p>
+                      <h5 style={{ fontSize: "14px" }}>
+                        Php {item.price}
+                      </h5>{" "}
                     </div>
-                    <h5>Php {item.price}</h5>{" "}
                   </Col>
                 </>
               ))}

@@ -429,6 +429,7 @@ form .divider {
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
+  /* background-color: #191919; */
   margin: 15px 0;
 }
 
@@ -451,7 +452,7 @@ form .divider {
 }
 
 .card-body {
-  max-height: 250px;
+  max-height: 350px;
 }
 .about-socials {
   display: flex;

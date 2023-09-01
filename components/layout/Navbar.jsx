@@ -53,7 +53,7 @@ function NavbarComponent() {
       >
         <Container xxl="true">
           <Navbar.Brand
-            href="#"
+            href="/"
             className="d-flex justify-content-center align-items-center"
           >
             <div className="logo">

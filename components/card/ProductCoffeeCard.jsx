@@ -45,6 +45,7 @@ function ProductCard({ item }) {
       }
     }
   };
+
   return (
     <>
       {item &&

@@ -16,14 +16,14 @@ function Footer() {
               height={100}
             />
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-              provident.
+              The coffee is brewed by first roasting the green coffee coals in a
+              brazier. Given an oppotunity to sample.
             </p>
           </div>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-            adipisci consequuntur nemo eligendi mollitia dolores tempora aliquid
-            ea laborum facilis!
+            At Cafe Urban, we are passionate about serving the finest coffee and
+            creating a warm, inviting space for our community to savor moments
+            of caffeinated bliss.
           </p>
           <div className="socials">
             <svg
@@ -137,7 +137,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <p>© 2023 by Jolo. All rights reserved.</p>
+      <p>© 2023 by Cafe Urban. All rights reserved.</p>
     </footer>
   );
 }
