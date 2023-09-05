@@ -1,9 +1,9 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useEffect } from "react";
 import {
   collection,
   getDocs,
@@ -12,16 +12,17 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "@/firebase/firebase";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 
 function PopularMenu() {
-  Aos.init();
+  useEffect(() => {
+    Aos.init();
+  }, []);
   const [coffees, setCoffees] = useState([]);
-  console.log(coffees);
 
   useEffect(() => {
     const coffeeRef = collection(db, "coffees");
@@ -68,22 +69,25 @@ function PopularMenu() {
       </div>
       <div data-aos="fade-in" className="menu-table">
         <h1>Popular Menu</h1>
-        <div data-aos="zoom-in" className="grid-container">
+        <div className="grid-container">
           <Container className="menu-grid">
             <Row className="justify-content-center">
               {coffees.map((item) => (
                 <>
                   <Col
+                    data-aos="zoom-in"
                     className="col d-flex justify-content-start"
                     sm={12}
                     md={5}
                   >
-                    <Image
-                      src={item.imageUrl}
-                      alt="coffee"
-                      height={70}
-                      width={70}
-                    />
+                    <Link href={`/product/${item.id}`}>
+                      <Image
+                        src={item.imageUrl}
+                        alt="coffee"
+                        height={70}
+                        width={70}
+                      />
+                    </Link>
                     <div style={{ marginLeft: "24px" }}>
                       <h4>{item.name}</h4>
                       <h5 style={{ fontSize: "14px" }}>

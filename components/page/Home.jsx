@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Contacts from "../layout/Contacts";
 import Exclusives from "../layout/Exclusives";
@@ -11,9 +11,15 @@ import Footer from "@/components/layout/Footer";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function HomePage() {
   const [user] = useAuthState(auth);
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <>
       <div className="home-container">
@@ -31,7 +37,7 @@ function HomePage() {
                 <div></div>
               ) : (
                 <Link href="/login">
-                  <Button variant="dark" size="md" className="normal-btn">
+                  <Button variant="dark" className="normal-btn">
                     Login
                   </Button>
                 </Link>

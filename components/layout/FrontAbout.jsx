@@ -1,10 +1,13 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 function FrontAbout() {
-  Aos.init();
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <div className="about-container">
       <div data-aos="zoom-in">

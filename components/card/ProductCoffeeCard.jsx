@@ -1,20 +1,23 @@
 "use client";
+import React, { useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Button, Card } from "react-bootstrap";
-import Image from "next/image";
-import { auth, db } from "@/firebase/firebase";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "@/firebase/firebase";
+
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-function ProductCard({ item }) {
-  Aos.init();
-
+function ProductCard({ item, show, setShow }) {
   const [user] = useAuthState(auth);
   const router = useRouter();
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   const addToCart = async (product) => {
     if (!user) {
@@ -37,9 +40,8 @@ function ProductCard({ item }) {
           // Increase the quantity of the product in the cart by 1
           cart[productIndex].quantity += 1;
         }
-        await setDoc(userRef, { cart }).then(() => {
-          router.push("/cart");
-        });
+        await setDoc(userRef, { cart });
+        setShow(!show);
       } catch (error) {
         console.error(error);
       }
@@ -50,9 +52,8 @@ function ProductCard({ item }) {
     <>
       {item &&
         item.map((items) => (
-          <div data-aos="zoom-in">
+          <div data-aos="zoom-in" key={items.id}>
             <Card
-              key={items.id}
               className="d-flex product-card flex-column align-items-center border border-dark"
               style={{
                 width: "14rem",

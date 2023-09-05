@@ -50,6 +50,7 @@ function NavbarComponent() {
         expand="md"
         className={`navbar-dark mb-3 ${scrolled ? "scrolled" : ""}`}
         fixed="top"
+        style={{ zIndex: 10 }}
       >
         <Container xxl="true">
           <Navbar.Brand

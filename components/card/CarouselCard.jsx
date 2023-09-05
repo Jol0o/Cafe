@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 function CarouselCard() {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <>
       <div data-aos="fade-right" className="service-card">

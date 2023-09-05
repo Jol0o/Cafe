@@ -13,7 +13,9 @@ import {
 import { db } from "@/firebase/firebase";
 
 function Exclusives() {
-  Aos.init();
+  useEffect(() => {
+    Aos.init();
+  }, []);
   const [coffees, setCoffees] = useState([]);
 
   useEffect(() => {

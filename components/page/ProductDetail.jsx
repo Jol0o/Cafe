@@ -4,6 +4,7 @@ import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { Toast, ToastContainer } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import StarRatings from "react-star-ratings";
 
@@ -12,6 +13,7 @@ function ProductDetail({ id }) {
   const [details, setDetails] = useState(null);
   const [user] = useAuthState(auth);
   const router = useRouter();
+  const [show, setShow] = useState(false);
 
   const changeRating = (newRating, name) => {
     setRating(newRating);
@@ -59,7 +61,7 @@ function ProductDetail({ id }) {
           cart[productIndex].quantity += 1;
         }
         await setDoc(userRef, { cart });
-        router.push("/cart");
+        setShow(!show)
       } catch (error) {
         console.error(error);
       }
@@ -68,6 +70,34 @@ function ProductDetail({ id }) {
 
   return (
     <div className="product-detail-container">
+      <ToastContainer
+        position="top-end"
+        className="p-3"
+        style={{ zIndex: 100 }}
+      >
+        <Toast
+          bg="dark"
+          onClose={() => setShow(false)}
+          show={show}
+          delay={2000}
+          autohide
+        >
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+          </Toast.Header>
+          <Toast.Body>
+            <p style={{ color: "#fff" }}>
+              Woohooo! you have added product into your cart.
+            </p>
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
       {details && (
         <div className="product-detail-content">
           <div className="img-container">

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Button, Form } from "react-bootstrap";
 
 function Footer() {
   return (

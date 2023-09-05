@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 function ContactCard() {
-  Aos.init();
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <div className="contacts">
       <div data-aos="zoom-in" className="contact-card">

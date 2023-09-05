@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CarouselCard from "./../card/CarouselCard";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
 function Services() {
-  Aos.init();
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
     <div className="service-container">
       <div data-aos="zoom-out">

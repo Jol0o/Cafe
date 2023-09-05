@@ -11,7 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-function ProductPastriesCard({ item }) {
+function ProductPastriesCard({ item, show, setShow }) {
   Aos.init();
 
   const [user] = useAuthState(auth);
@@ -38,9 +38,8 @@ function ProductPastriesCard({ item }) {
           // Increase the quantity of the product in the cart by 1
           cart[productIndex].quantity += 1;
         }
-        await setDoc(userRef, { cart }).then(() => {
-          router.push("/cart");
-        });
+        await setDoc(userRef, { cart });
+        setShow(!show);
       } catch (error) {
         console.error(error);
       }
@@ -82,7 +81,6 @@ function ProductPastriesCard({ item }) {
                     Explore
                   </Button>
                 </Link>
-                <Link href={`/product/${items.id}`}>
                   <Button
                     style={{ backgroundColor: "#d3ad7f" }}
                     variant="dark"
@@ -91,7 +89,6 @@ function ProductPastriesCard({ item }) {
                   >
                     Buy Now
                   </Button>
-                </Link>
               </div>
             </Card.Body>
           </Card>

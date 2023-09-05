@@ -1,8 +1,10 @@
 "use client";
+import ForgatModal from "@/components/card/ForgatModal";
 import { auth, db } from "@/firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
@@ -18,6 +20,10 @@ function page() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const register = async (e) => {
     e.preventDefault();
@@ -93,6 +99,7 @@ function page() {
 
   return (
     <>
+      <ForgatModal setShow={setShow} show={show} handleClose={handleClose}/>
       <div className="login-container">
         <div className="login-form">
           <form>
@@ -107,7 +114,7 @@ function page() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your Password"
             />
-            <p style={{ color: "white" }}>Forgat your password?</p>
+            <p onClick={handleShow}>Forgat your password?</p>
             {isLogin ? (
               <>
                 <button onClick={login}>Login</button>
