@@ -71,7 +71,7 @@ function About() {
         </div>
         <div className="about-team">
           {team.map((item) => (
-            <div data-aos="zoom-in" className="team-card">
+            <div key={item.name} data-aos="zoom-in" className="team-card">
               <Image src={item.img} alt="img" width={300} height={300} />
               <div className="card-body">
                 <h4>{item.name}</h4>
